@@ -1,0 +1,44 @@
+<body>
+<div class="container">
+
+  <header>
+    <h1>Lista de Tarefas ({{incompleteCount}})</h1>
+
+    <label class="hide-completed">
+      <input type="checkbox"/>Ocultar Concluídas</label>
+
+    {{> loginButtons}}
+    <form id="formSearch" class="new-task">
+      {{> formInput
+          label="Pesquisar"
+          id="inputSearch"
+          name="filtro"
+          placeholder="Pesquisar tarefas"
+          type="search"}}
+    </form>
+
+
+    {{#if currentUser}}
+
+      <form id="formInsercao" class="new-task">
+        <div style="display: flex">
+          <div>
+            <label for="text">Título</label>
+            <input type="text" name="text" placeholder="Título da tarefa"/>
+          </div>
+          <div>
+            <label for="data">Data Previsão:</label>
+            <input required id="previsao" type="date" name="previsao" placeholder="Data Prevista"/>
+          </div>
+          <button type="submit" style="height: 25px; align-self: center">Salvar</button>
+        </div>
+      </form>
+    {{/if}}
+  </header>
+  <ul>
+    {{#each tasks}}
+      {{> task}}
+    {{/each}}
+  </ul>
+</div>
+</body>
